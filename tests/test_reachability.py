@@ -1,10 +1,32 @@
 __author__ = "gjoshi"
 
-
 import pytest
 from algorithms.reachability import is_reachable, get_path
+from graph import Graph
 from digraph import DiGraph
 from exception import PathNotFoundError
+
+
+def test_reachability_on_undirected_graph():
+    g = Graph()
+    g.add_nodes_from([1, 2, 3, 4, 5])
+    g.add_edge(1, 2)
+    g.add_edge(2, 3)
+    g.add_edge(2, 4)
+    g.add_edge(3, 4)
+
+    assert is_reachable(g, 1, 2)
+    assert is_reachable(g, 2, 1)
+    assert is_reachable(g, 1, 3)
+    assert is_reachable(g, 3, 1)
+    assert is_reachable(g, 1, 4)
+    assert is_reachable(g, 4, 1)
+    assert is_reachable(g, 2, 3)
+    assert is_reachable(g, 3, 2)
+    assert is_reachable(g, 2, 4)
+    assert is_reachable(g, 4, 2)
+    assert is_reachable(g, 3, 4)
+    assert is_reachable(g, 4, 3)
 
 
 def test_source_is_reachable_from_source():

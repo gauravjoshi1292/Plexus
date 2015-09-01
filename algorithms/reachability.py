@@ -1,6 +1,5 @@
 __author__ = "gjoshi"
 
-
 import Queue
 from exception import PathNotFoundError
 
